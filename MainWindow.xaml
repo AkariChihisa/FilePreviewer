@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FilePreviewer"
         mc:Ignorable="d"
         Title="FilePreviewer" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#1E1E1E">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -14,22 +14,49 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
             <StackPanel>
-                <Button x:Name="FileButton" Width="70" Height="20"
-                        MouseEnter="FileButton_MouseEnter"
-                        MouseLeave="FileButton_MouseLeave">
-                    文件(F)
-                </Button>
+                <local:NavigateButton x:Name="FileButton" Width="70" Height="20"
+                                      Click="FileButton_Click"
+                                      MouseEnter="FileButton_MouseEnter"
+                                      MouseLeave="FileButton_MouseLeave">
+                                      文件(F)
+                </local:NavigateButton>
                 <Popup x:Name="FileMenuPopup"
-                       PlacementTarget=" ">
-                    
+                       PlacementTarget="{Binding ElementName=FileButton}"
+                       Placement="Bottom"
+                       StaysOpen="False"
+                       AllowsTransparency="True"
+                       PopupAnimation="Fade"
+                       MouseEnter="FileMenuPopup_MouseEnter"
+                       MouseLeave="FileMenuPopup_MouseLeave">
+                    <Border Background="White" BorderBrush="Gray" BorderThickness="1">
+                        <StackPanel>
+                            <Button Width="150" Height="20">新建(N)</Button>
+                            <Button Width="150" Height="20">打开(O)</Button>
+                            <Button Width="150" Height="20">保存(S)</Button>
+                            <Button Width="150" Height="20">另存为(A)</Button>
+                            <Button Width="150" Height="20">关闭(C)</Button>
+                            <Button Width="150" Height="20">打印(P)</Button>
+                            <Button Width="150" Height="20">退出(X)</Button>
+                        </StackPanel>
+                    </Border>
                 </Popup>
             </StackPanel>
-            
-            <Button Width="70" Height="20">编辑(E)</Button>
-            <Button Width="70" Height="20">查看(V)</Button>
-            <Button Width="70" Height="20">外观(P)</Button>
-            <Button Width="70" Height="20">设置(S)</Button>
-            <Button Width="70" Height="20">帮助(H)</Button>
+
+            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
+                编辑(E)
+            </local:NavigateButton>
+            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
+                查看(V)
+            </local:NavigateButton>
+            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
+                外观(P)
+            </local:NavigateButton>
+            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
+                设置(S)
+            </local:NavigateButton>
+            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
+                帮助(H)
+            </local:NavigateButton>
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -37,7 +64,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="0" Grid.Column="0"></StackPanel>
-            <TextBox Grid.Row="0" Grid.Column="1" TextWrapping="Wrap"></TextBox>
+            <TextBox  Background="#1E1E1E" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap"></TextBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0">
             <Grid.ColumnDefinitions>
