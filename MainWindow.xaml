@@ -1,0 +1,66 @@
+﻿<Window x:Class="FilePreviewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FilePreviewer"
+        mc:Ignorable="d"
+        Title="FilePreviewer" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+            <StackPanel>
+                <Button x:Name="FileButton" Width="70" Height="20"
+                        MouseEnter="FileButton_MouseEnter"
+                        MouseLeave="FileButton_MouseLeave">
+                    文件(F)
+                </Button>
+                <Popup x:Name="FileMenuPopup"
+                       PlacementTarget=" ">
+                    
+                </Popup>
+            </StackPanel>
+            
+            <Button Width="70" Height="20">编辑(E)</Button>
+            <Button Width="70" Height="20">查看(V)</Button>
+            <Button Width="70" Height="20">外观(P)</Button>
+            <Button Width="70" Height="20">设置(S)</Button>
+            <Button Width="70" Height="20">帮助(H)</Button>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0"></StackPanel>
+            <TextBox Grid.Row="0" Grid.Column="1" TextWrapping="Wrap"></TextBox>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <!-- 第一列 5倍宽度 -->
+                <ColumnDefinition Width="1*"/>
+                <!-- 第二列 1倍宽度 -->
+                <ColumnDefinition Width="2*"/>
+                <!-- 第三列 2倍宽度 -->
+                <ColumnDefinition Width="1*"/>
+                <!-- 第四列 1倍宽度 -->
+                <ColumnDefinition Width="1.5*"/>
+                <!-- 第五列 1.5倍宽度 -->
+                <ColumnDefinition Width="1*"/>
+                <!-- 第六列 1倍宽度 -->
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="行R，列C" HorizontalAlignment="Stretch"/>
+            <Button Grid.Column="1" Content="X个字符" HorizontalAlignment="Stretch"/>
+            <Button Grid.Column="2" Content="纯文本" HorizontalAlignment="Stretch"/>
+            <Button Grid.Column="3" Content="100%" HorizontalAlignment="Stretch"/>
+            <Button Grid.Column="4" Content="Windows(CRLF)" HorizontalAlignment="Stretch"/>
+            <Button Grid.Column="5" Content="UTF-8" HorizontalAlignment="Stretch"/>
+        </Grid>
+    </Grid>
+</Window>
