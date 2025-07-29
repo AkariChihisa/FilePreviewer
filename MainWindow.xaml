@@ -56,9 +56,9 @@
             </Grid.ColumnDefinitions>
             <Border Background="#1E1E1E" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel Grid.Row="0" Grid.Column="0">
-                    <ListBox x:Name="FileListBox" SelectionChanged="FileListBox_SelectionChanged"></ListBox>
+                    <ListBox x:Name="FileListBox" SelectionChanged="FileListBox_SelectionChanged" Background="#1E1E1E" Foreground="White"></ListBox>
                 </StackPanel>
-            </Border>
+            </Border>  
             <TextBox x:Name="FileContentBox"
                      Background="#1E1E1E" 
                      Foreground="White" 
@@ -87,7 +87,7 @@
             </Grid.ColumnDefinitions>
 
             <local:NavigateButton Grid.Column="0" Content="行R，列C" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-            <local:NavigateButton Grid.Column="1" Content="X个字符" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+            <local:NavigateButton x:Name="Counter_String" Grid.Column="1" Content="X个字符" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
             <local:NavigateButton Grid.Column="2" Content="纯文本" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
             <local:NavigateButton Grid.Column="3" Content="100%" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
             <local:NavigateButton Grid.Column="4" Content="Windows(CRLF)" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>

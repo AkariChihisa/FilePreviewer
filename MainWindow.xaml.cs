@@ -4,6 +4,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
+using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+
 
 namespace FilePreviewer
 {
@@ -47,18 +51,23 @@ namespace FilePreviewer
 
         private void OpenFileButton_Click(Object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Multiselect = true;
-            dlg.Filter = "文本文件 (*.txt;*.log)|*.txt;*.log";
-
-            bool? result = dlg.ShowDialog();
-
-            if (result == true)
+            using (var dialog = new FolderBrowserDialog())
             {
-                FileListBox.Items.Clear();
-                foreach (var filename in dlg.FileNames)
+                dialog.Description = "选择包含 .txt 和 .log 文件的文件夹";
+                dialog.ShowNewFolderButton = false;
+
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    FileListBox.Items.Add(filename);
+                    string selectedPath = dialog.SelectedPath;
+                    var files = Directory.GetFiles(selectedPath, "*.*", SearchOption.AllDirectories)
+                                         .Where(f => f.EndsWith(".txt", StringComparison.OrdinalIgnoreCase) ||
+                                                     f.EndsWith(".log", StringComparison.OrdinalIgnoreCase));
+
+                    FileListBox.Items.Clear();
+                    foreach (var file in files)
+                    {
+                        FileListBox.Items.Add(file);
+                    }
                 }
             }
         }
@@ -69,6 +78,7 @@ namespace FilePreviewer
                 try
                 {
                     string content = File.ReadAllText(selectedFile);
+                    Counter_String.Content = content.Length.ToString()+"个字符";
                     FileContentBox.Text = content;
                 }
                 catch (IOException ex)
