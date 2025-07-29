@@ -1,13 +1,9 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FilePreviewer
 {
@@ -16,10 +12,14 @@ namespace FilePreviewer
     /// </summary>
     public partial class MainWindow : Window
     {
+        // 存储文件路径的列表
+        private List<string> filePaths = new List<string>();
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
         private void FileButton_Click(object sender, RoutedEventArgs e)
         {
             FileMenuPopup.IsOpen = true;
@@ -43,6 +43,39 @@ namespace FilePreviewer
         private void FileMenuPopup_MouseLeave(object sender, MouseEventArgs e)
         {
             FileMenuPopup.IsOpen = false;
+        }
+
+        private void OpenFileButton_Click(Object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Multiselect = true;
+            dlg.Filter = "文本文件 (*.txt;*.log)|*.txt;*.log";
+
+            bool? result = dlg.ShowDialog();
+
+            if (result == true)
+            {
+                FileListBox.Items.Clear();
+                foreach (var filename in dlg.FileNames)
+                {
+                    FileListBox.Items.Add(filename);
+                }
+            }
+        }
+        private void FileListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FileListBox.SelectedItem is string selectedFile)
+            {
+                try
+                {
+                    string content = File.ReadAllText(selectedFile);
+                    FileContentBox.Text = content;
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("读取文件出错: " + ex.Message);
+                }
+            }
         }
     }
 }

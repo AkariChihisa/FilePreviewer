@@ -18,7 +18,7 @@
                                       Click="FileButton_Click"
                                       MouseEnter="FileButton_MouseEnter"
                                       MouseLeave="FileButton_MouseLeave">
-                                      文件(F)
+                    文件(F)
                 </local:NavigateButton>
                 <Popup x:Name="FileMenuPopup"
                        PlacementTarget="{Binding ElementName=FileButton}"
@@ -28,43 +28,47 @@
                        PopupAnimation="Fade"
                        MouseEnter="FileMenuPopup_MouseEnter"
                        MouseLeave="FileMenuPopup_MouseLeave">
-                    <Border Background="White" BorderBrush="Gray" BorderThickness="1">
+                    <Border Background="#1E1E1E" BorderBrush="Gray" BorderThickness="1">
                         <StackPanel>
-                            <Button Width="150" Height="20">新建(N)</Button>
-                            <Button Width="150" Height="20">打开(O)</Button>
-                            <Button Width="150" Height="20">保存(S)</Button>
-                            <Button Width="150" Height="20">另存为(A)</Button>
-                            <Button Width="150" Height="20">关闭(C)</Button>
-                            <Button Width="150" Height="20">打印(P)</Button>
-                            <Button Width="150" Height="20">退出(X)</Button>
+                            <local:NavigateButton Width="150" Height="30" Content="新建(N)" Padding="45,0" ButtonCornerRadius="5"/>
+                            <local:NavigateButton Width="150" Height="30" Content="打开(O)" Click="OpenFileButton_Click" Padding="45,0" ButtonCornerRadius="5"/>
+                            <local:NavigateButton Width="150" Height="30" Content="保存(S)" Padding="45,0" ButtonCornerRadius="5"/>
+                            <local:NavigateButton Width="150" Height="30" Content="另存为(A)" Padding="45,0" ButtonCornerRadius="5"/>
+                            <local:NavigateButton Width="150" Height="30" Content="关闭(C)" Padding="45,0" ButtonCornerRadius="5"/>
+                            <local:NavigateButton Width="150" Height="30" Content="打印(P)" Padding="45,0" ButtonCornerRadius="5"/>
+                            <local:NavigateButton Width="150" Height="30" Content="退出(X)" Padding="45,0" ButtonCornerRadius="5"/>
                         </StackPanel>
                     </Border>
                 </Popup>
             </StackPanel>
 
-            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
-                编辑(E)
-            </local:NavigateButton>
-            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
-                查看(V)
-            </local:NavigateButton>
-            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
-                外观(P)
-            </local:NavigateButton>
-            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
-                设置(S)
-            </local:NavigateButton>
-            <local:NavigateButton Width="70" Height="20" ButtonCornerRadius="5">
-                帮助(H)
-            </local:NavigateButton>
+            <local:NavigateButton Width="70" Height="20" Content="编辑(E)" ButtonCornerRadius="5"/>
+            <local:NavigateButton Width="70" Height="20" Content="查看(V)"  ButtonCornerRadius="5"/>
+            <local:NavigateButton Width="70" Height="20" Content="外观(P)"  ButtonCornerRadius="5"/>
+            <local:NavigateButton Width="70" Height="20" Content="设置(S)"  ButtonCornerRadius="5"/>
+            <local:NavigateButton Width="70" Height="20" Content="帮助(H)"  ButtonCornerRadius="5"/>
+
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="0" Grid.Column="0"></StackPanel>
-            <TextBox  Background="#1E1E1E" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap"></TextBox>
+            <Border Background="#1E1E1E" BorderBrush="Gray" BorderThickness="1">
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <ListBox x:Name="FileListBox" SelectionChanged="FileListBox_SelectionChanged"></ListBox>
+                </StackPanel>
+            </Border>
+            <TextBox x:Name="FileContentBox"
+                     Background="#1E1E1E" 
+                     Foreground="White" 
+                     FontSize="20" 
+                     Grid.Row="0" 
+                     Grid.Column="1" 
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto"
+                     AcceptsReturn="True">
+            </TextBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -82,12 +86,12 @@
                 <!-- 第六列 1倍宽度 -->
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="行R，列C" HorizontalAlignment="Stretch"/>
-            <Button Grid.Column="1" Content="X个字符" HorizontalAlignment="Stretch"/>
-            <Button Grid.Column="2" Content="纯文本" HorizontalAlignment="Stretch"/>
-            <Button Grid.Column="3" Content="100%" HorizontalAlignment="Stretch"/>
-            <Button Grid.Column="4" Content="Windows(CRLF)" HorizontalAlignment="Stretch"/>
-            <Button Grid.Column="5" Content="UTF-8" HorizontalAlignment="Stretch"/>
+            <local:NavigateButton Grid.Column="0" Content="行R，列C" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+            <local:NavigateButton Grid.Column="1" Content="X个字符" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+            <local:NavigateButton Grid.Column="2" Content="纯文本" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+            <local:NavigateButton Grid.Column="3" Content="100%" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+            <local:NavigateButton Grid.Column="4" Content="Windows(CRLF)" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+            <local:NavigateButton Grid.Column="5" Content="UTF-8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
         </Grid>
     </Grid>
 </Window>
