@@ -1,10 +1,11 @@
 ﻿using Microsoft.Win32;
 using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 
@@ -77,7 +78,12 @@ namespace FilePreviewer
             {
                 try
                 {
-                    string content = File.ReadAllText(selectedFile);
+                    string content = File.ReadAllText(selectedFile,Encoding.UTF8);
+                    if (content.Contains("�"))
+                    {
+                        // 出现乱码，尝试使用GB2312编码读取
+                        content = File.ReadAllText(selectedFile, Encoding.GetEncoding("GB2312"));
+                    }
                     Counter_String.Content = content.Length.ToString()+"个字符";
                     FileContentBox.Text = content;
                 }

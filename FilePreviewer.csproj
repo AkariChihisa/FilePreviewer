@@ -12,4 +12,8 @@
 		<FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="util\" />
+	</ItemGroup>
+
 </Project>
