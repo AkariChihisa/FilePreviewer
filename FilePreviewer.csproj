@@ -9,11 +9,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="util\**" />
+	  <EmbeddedResource Remove="util\**" />
+	  <None Remove="util\**" />
+	  <Page Remove="util\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="util\" />
+	  <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
 	</ItemGroup>
 
 </Project>
