@@ -3,24 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FilePreviewer"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        xmlns:local="clr-namespace:FilePreviewer"
         Title="FilePreviewer" Height="450" Width="800">
-    <Grid Background="#1E1E1E">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-            <StackPanel>
-                <local:NavigateButton x:Name="FileButton" Width="70" Height="20"
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                <GradientStop Color="#273252" Offset="0"></GradientStop>
+                <GradientStop Color="#273252" Offset="0.65"></GradientStop>
+                <GradientStop Color="#273252" Offset="0.6"></GradientStop>
+                <GradientStop Color="#4F4268" Offset="1"></GradientStop>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                <StackPanel>
+                    <local:NavigateButton x:Name="FileButton" Width="70" Height="20"
                                       Click="FileButton_Click"
                                       MouseEnter="FileButton_MouseEnter"
                                       MouseLeave="FileButton_MouseLeave">
-                    文件(F)
-                </local:NavigateButton>
-                <Popup x:Name="FileMenuPopup"
+                        文件(F)
+                    </local:NavigateButton>
+                    <Popup x:Name="FileMenuPopup"
                        PlacementTarget="{Binding ElementName=FileButton}"
                        Placement="Bottom"
                        StaysOpen="False"
@@ -28,39 +38,52 @@
                        PopupAnimation="Fade"
                        MouseEnter="FileMenuPopup_MouseEnter"
                        MouseLeave="FileMenuPopup_MouseLeave">
-                    <Border Background="#1E1E1E" BorderBrush="Gray" BorderThickness="1">
-                        <StackPanel>
-                            <local:NavigateButton Width="150" Height="30" Content="新建(N)" Padding="45,0" ButtonCornerRadius="5"/>
-                            <local:NavigateButton Width="150" Height="30" Content="打开(O)" Click="OpenFileButton_Click" Padding="45,0" ButtonCornerRadius="5"/>
-                            <local:NavigateButton Width="150" Height="30" Content="保存(S)" Padding="45,0" ButtonCornerRadius="5"/>
-                            <local:NavigateButton Width="150" Height="30" Content="另存为(A)" Padding="45,0" ButtonCornerRadius="5"/>
-                            <local:NavigateButton Width="150" Height="30" Content="关闭(C)" Padding="45,0" ButtonCornerRadius="5"/>
-                            <local:NavigateButton Width="150" Height="30" Content="打印(P)" Padding="45,0" ButtonCornerRadius="5"/>
-                            <local:NavigateButton Width="150" Height="30" Content="退出(X)" Padding="45,0" ButtonCornerRadius="5"/>
-                        </StackPanel>
-                    </Border>
-                </Popup>
+                        <Border Background="#1E1E1E" BorderBrush="Gray" BorderThickness="1">
+                            <StackPanel>
+                                <local:NavigateButton Width="150" Height="30" Content="新建(N)" Padding="45,0" ButtonCornerRadius="5"/>
+                                <local:NavigateButton Width="150" Height="30" Content="打开(O)" Click="OpenFileButton_Click" Padding="45,0" ButtonCornerRadius="5"/>
+                                <local:NavigateButton Width="150" Height="30" Content="保存(S)" Padding="45,0" ButtonCornerRadius="5"/>
+                                <local:NavigateButton Width="150" Height="30" Content="另存为(A)" Padding="45,0" ButtonCornerRadius="5"/>
+                                <local:NavigateButton Width="150" Height="30" Content="关闭(C)" Padding="45,0" ButtonCornerRadius="5"/>
+                                <local:NavigateButton Width="150" Height="30" Content="打印(P)" Padding="45,0" ButtonCornerRadius="5"/>
+                                <local:NavigateButton Width="150" Height="30" Content="退出(X)" Padding="45,0" ButtonCornerRadius="5"/>
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+                </StackPanel>
+
+                <Button VerticalAlignment="Center"
+                        Width="20" Height="70"
+                        HorizontalAlignment="Center"
+                        md:ButtonProgressAssist.Value="50"
+                        md:ButtonProgressAssist.IsIndicatorVisible="True"
+                        Style="{DynamicResource MaterialDesignFABMiniAccentButton}">
+                    <Button.LayoutTransform>
+                        <RotateTransform Angle="90" />
+                    </Button.LayoutTransform>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <md:PackIcon Kind="Face" Width="20" Height="20" Margin="0,0,5,0"/>
+                        <TextBlock Text="编辑(E)" VerticalAlignment="Center" Foreground="White" FontSize="16"/>
+                    </StackPanel>
+                </Button>
+                <local:NavigateButton Width="70" Height="20" Content="查看(V)"  ButtonCornerRadius="5"/>
+                <local:NavigateButton Width="70" Height="20" Content="外观(P)"  ButtonCornerRadius="5"/>
+                <local:NavigateButton Width="70" Height="20" Content="设置(S)"  ButtonCornerRadius="5"/>
+                <local:NavigateButton Width="70" Height="20" Content="帮助(H)"  ButtonCornerRadius="5"/>
+
             </StackPanel>
 
-            <local:NavigateButton Width="70" Height="20" Content="编辑(E)" ButtonCornerRadius="5"/>
-            <local:NavigateButton Width="70" Height="20" Content="查看(V)"  ButtonCornerRadius="5"/>
-            <local:NavigateButton Width="70" Height="20" Content="外观(P)"  ButtonCornerRadius="5"/>
-            <local:NavigateButton Width="70" Height="20" Content="设置(S)"  ButtonCornerRadius="5"/>
-            <local:NavigateButton Width="70" Height="20" Content="帮助(H)"  ButtonCornerRadius="5"/>
-
-        </StackPanel>
-        <Grid Grid.Row="1" Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Border Background="#1E1E1E" BorderBrush="Gray" BorderThickness="1">
-                <StackPanel Grid.Row="0" Grid.Column="0">
-                    <ListBox x:Name="FileListBox" SelectionChanged="FileListBox_SelectionChanged" Background="#1E1E1E" Foreground="White"></ListBox>
-                </StackPanel>
-            </Border>  
-            <TextBox x:Name="FileContentBox"
-                     Background="#1E1E1E" 
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="Gray" BorderThickness="1">
+                    <StackPanel Grid.Row="0" Grid.Column="0">
+                        <ListBox x:Name="FileListBox" SelectionChanged="FileListBox_SelectionChanged" Background="#1E1E1E" Foreground="White"></ListBox>
+                    </StackPanel>
+                </Border>
+                <TextBox x:Name="FileContentBox"
                      Foreground="White" 
                      FontSize="20" 
                      Grid.Row="0" 
@@ -68,30 +91,25 @@
                      TextWrapping="Wrap"
                      VerticalScrollBarVisibility="Auto"
                      AcceptsReturn="True">
-            </TextBox>
-        </Grid>
-        <Grid Grid.Row="2" Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <!-- 第一列 5倍宽度 -->
-                <ColumnDefinition Width="1*"/>
-                <!-- 第二列 1倍宽度 -->
-                <ColumnDefinition Width="2*"/>
-                <!-- 第三列 2倍宽度 -->
-                <ColumnDefinition Width="1*"/>
-                <!-- 第四列 1倍宽度 -->
-                <ColumnDefinition Width="1.5*"/>
-                <!-- 第五列 1.5倍宽度 -->
-                <ColumnDefinition Width="1*"/>
-                <!-- 第六列 1倍宽度 -->
-            </Grid.ColumnDefinitions>
+                </TextBox>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
 
-            <local:NavigateButton Grid.Column="0" Content="行R，列C" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-            <local:NavigateButton x:Name="Counter_String" Grid.Column="1" Content="X个字符" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-            <local:NavigateButton Grid.Column="2" Content="纯文本" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-            <local:NavigateButton Grid.Column="3" Content="100%" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-            <local:NavigateButton Grid.Column="4" Content="Windows(CRLF)" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-            <local:NavigateButton Grid.Column="5" Content="UTF-8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+                <local:NavigateButton Grid.Column="0" Content="行R，列C" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+                <local:NavigateButton x:Name="Counter_String" Grid.Column="1" Content="X个字符" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+                <local:NavigateButton Grid.Column="2" Content="纯文本" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+                <local:NavigateButton Grid.Column="3" Content="100%" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+                <local:NavigateButton Grid.Column="4" Content="Windows(CRLF)" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+                <local:NavigateButton Grid.Column="5" Content="UTF-8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>
