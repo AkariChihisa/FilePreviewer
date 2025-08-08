@@ -58,7 +58,9 @@ namespace FilePreviewer
                     {
                         // 出现乱码，尝试使用GB2312编码读取
                         content = File.ReadAllText(selectedFile, Encoding.GetEncoding("GB2312"));
+                        Content_Unicode.Content = "GB2312";
                     }
+                    Content_Unicode.Content = "UTF-8";
                     Counter_String.Content = content.Length.ToString() + "个字符";
                     FileContentBox.Text = content;
                 }
