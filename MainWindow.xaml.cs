@@ -25,7 +25,6 @@ namespace FilePreviewer
             InitializeComponent();
         }
 
-
         private void OpenFileButton_Click(Object sender, RoutedEventArgs e)
         {
             using (var dialog = new FolderBrowserDialog())
@@ -54,13 +53,13 @@ namespace FilePreviewer
             {
                 try
                 {
-                    string content = File.ReadAllText(selectedFile,Encoding.UTF8);
+                    string content = File.ReadAllText(selectedFile, Encoding.UTF8);
                     if (content.Contains("�"))
                     {
                         // 出现乱码，尝试使用GB2312编码读取
                         content = File.ReadAllText(selectedFile, Encoding.GetEncoding("GB2312"));
                     }
-                    Counter_String.Content = content.Length.ToString()+"个字符";
+                    Counter_String.Content = content.Length.ToString() + "个字符";
                     FileContentBox.Text = content;
                 }
                 catch (IOException ex)

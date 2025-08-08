@@ -23,130 +23,153 @@
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-                <Grid Width="100">
-                    <materialDesign:PopupBox
-                        x:Name="FilePopupBox"
-                        StaysOpen="False"
-                        Padding="0"
-                        Background="{DynamicResource MaterialDesignPaper}"
-                        Foreground="{DynamicResource MaterialDesignBody}"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top">
+                <Grid Width="130">
+                    <materialDesign:SplitButton
+                        Content="文件(F)"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource MaterialDesignRaisedLightSplitButton}"
+                        materialDesign:ButtonAssist.CornerRadius="0"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        <materialDesign:SplitButton.PopupContent>
+                            <StackPanel>
+                                <Grid Width="130">
+                                    <Button Height="30"
+                                            materialDesign:ButtonAssist.CornerRadius="0"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            ToolTip="新建文件/文件夹">
+                                        <Grid Width="130">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
 
-                        <!-- 显示内容 -->
-                        <materialDesign:PopupBox.Content>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="File" Width="20" Height="20"/>
-                                <TextBlock Text="文件(F)" VerticalAlignment="Center"/>
+                                            <materialDesign:PackIcon Kind="NewBox"
+                                                                     VerticalAlignment="Center"
+                                                                     Width="20" Height="20"
+                                                                     Margin="15,0,0,0"/>
+                                            <TextBlock Grid.Column="1"
+                                                       Text="新建(N)"
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                                <Grid Width="130">
+                                    <Button Height="30"
+                                            Click="OpenFileButton_Click"
+                                            materialDesign:ButtonAssist.CornerRadius="0"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            ToolTip="打开文件夹">
+                                        <Grid Width="130">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <materialDesign:PackIcon Kind="FilePlus"
+                                                                     VerticalAlignment="Center"
+                                                                     Width="20" Height="20"
+                                                                     Margin="15,0,0,0"/>
+                                            <TextBlock Grid.Column="1"
+                                                       Text="打开(S)"
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                                <Grid Width="130">
+                                    <Button Height="30"
+                                            materialDesign:ButtonAssist.CornerRadius="0"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            ToolTip="保存已修改的部分">
+                                        <Grid Width="130">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <materialDesign:PackIcon Kind="ContentSave"
+                                                                     VerticalAlignment="Center"
+                                                                     Width="20" Height="20"
+                                                                     Margin="15,0,0,0"/>
+                                            <TextBlock Grid.Column="1"
+                                                       Text="保存(S)"
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                                <Grid Width="130">
+                                    <Button Height="30"
+                                            materialDesign:ButtonAssist.CornerRadius="0"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            ToolTip="在本地路径下新建备份">
+                                        <Grid Width="130">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <materialDesign:PackIcon Kind="ContentCopy"
+                                                                     VerticalAlignment="Center"
+                                                                     Width="20" Height="20"
+                                                                     Margin="15,0,0,0"/>
+                                            <TextBlock Grid.Column="1"
+                                                       Text="另存为(C)"
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                                <Grid Width="130">
+                                    <Button Height="30"
+                                            materialDesign:ButtonAssist.CornerRadius="0"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            ToolTip="连接打印机并打印文件">
+                                        <Grid Width="130">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <materialDesign:PackIcon Kind="Printer"
+                                                                     VerticalAlignment="Center"
+                                                                     Width="20" Height="20"
+                                                                     Margin="15,0,0,0"/>
+                                            <TextBlock Grid.Column="1"
+                                                       Text="打印(P)"
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                                <Grid Width="130">
+                                    <Button Height="30"
+                                            materialDesign:ButtonAssist.CornerRadius="0"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                            ToolTip="退出应用">
+                                        <Grid Width="130">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <materialDesign:PackIcon Kind="ExitToApp"
+                                                                     VerticalAlignment="Center"
+                                                                     Width="20" Height="20"
+                                                                     Margin="15,0,0,0"/>
+                                            <TextBlock Grid.Column="1"
+                                                       Text="退出(E)"
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
                             </StackPanel>
-                        </materialDesign:PopupBox.Content>
 
-                        <!-- 弹出内容 -->
-                        <StackPanel>
-                            <Grid Width="150">
-                                <Button
-                                    Height="30"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                                    >
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <materialDesign:PackIcon Kind="ViewList" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
-                                        <TextBlock Text="新建(N)" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                            <Grid Width="150">
-                                <Button
-                                    Height="30"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                                    Click="OpenFileButton_Click"
-                                    >
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <materialDesign:PackIcon Kind="ViewList" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
-                                        <TextBlock Text="打开(O)" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                            <Grid Width="150">
-                                <Button
-                                    Height="30"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                                    >
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <materialDesign:PackIcon Kind="ViewList" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
-                                        <TextBlock Text="保存(S)" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                            <Grid Width="150">
-                                <Button
-                                    Height="30"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                                    >
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <materialDesign:PackIcon Kind="ViewList" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
-                                        <TextBlock Text="另存为(S)" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                            <Grid Width="150">
-                                <Button
-                                    Height="30"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                                    >
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <materialDesign:PackIcon Kind="ViewList" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
-                                        <TextBlock Text="关闭(C)" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                            <Grid Width="150">
-                                <Button
-                                    Height="30"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                                    >
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <materialDesign:PackIcon Kind="ViewList" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
-                                        <TextBlock Text="打印(P)" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                            <Grid Width="150">
-                                <Button
-                                    Height="30"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                    ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                                    >
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <materialDesign:PackIcon Kind="ViewList" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
-                                        <TextBlock Text="退出(N)" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
-
-                    </materialDesign:PopupBox>
+                        </materialDesign:SplitButton.PopupContent>
+                    </materialDesign:SplitButton>
                 </Grid>
-
                 <Grid Width="100">
                     <Button
                         Height="25"
@@ -223,10 +246,11 @@
             <Grid Grid.Row="1" Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="47.4"></ColumnDefinition>
-                    <ColumnDefinition Width="152.6"/>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="67*"/>
+                    <ColumnDefinition Width="309*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Border BorderBrush="Gray" BorderThickness="1" Grid.ColumnSpan="2">
+                <Border BorderBrush="Gray" BorderThickness="1" Grid.ColumnSpan="3">
                     <StackPanel Grid.Row="0" Grid.Column="0">
                         <ListBox x:Name="FileListBox" SelectionChanged="FileListBox_SelectionChanged" Background="#1E1E1E" Foreground="White"></ListBox>
                     </StackPanel>
@@ -235,7 +259,7 @@
                          Foreground="White"
                          FontSize="20"
                          Grid.Row="0"
-                         Grid.Column="2"
+                         Grid.Column="3"
                          TextWrapping="Wrap"
                          VerticalScrollBarVisibility="Auto"
                          AcceptsReturn="True">
@@ -251,12 +275,86 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <local:NavigateButton Grid.Column="0" Content="行R，列C" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-                <local:NavigateButton x:Name="Counter_String" Grid.Column="1" Content="X个字符" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-                <local:NavigateButton Grid.Column="2" Content="纯文本" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-                <local:NavigateButton Grid.Column="3" Content="100%" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-                <local:NavigateButton Grid.Column="4" Content="Windows(CRLF)" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
-                <local:NavigateButton Grid.Column="5" Content="UTF-8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" ButtonCornerRadius="0"/>
+                <Grid Grid.Column="0">
+                    <Button
+                        Width="AUTO"
+                        Height="25"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="行R,列C" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button
+                        x:Name="Counter_String"
+                        Height="25"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="X个字符" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button
+                        Height="25"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="纯文本" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button
+                        Height="25"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="100%" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <Button
+                        Height="25"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="Windows(CRLF)" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="5">
+                    <Button
+                        Height="25"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="UTF-8" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
             </Grid>
         </Grid>
     </Border>
