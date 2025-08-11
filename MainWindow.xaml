@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         xmlns:local="clr-namespace:FilePreviewer"
         Title="FilePreviewer" Height="450" Width="800">
+    <!-- 快捷键绑定 -->
+    <Window.InputBindings>
+        
+    </Window.InputBindings>
     <Border>
         <Border.Background>
             <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
@@ -29,11 +33,11 @@
                     <MenuItem Header="文件(F)">
                         <MenuItem Header="新建(N)" Icon="{materialDesign:PackIcon Kind=NewBox}" ToolTip="新建文件/文件夹" />
                         <MenuItem Header="打开(O)" Icon="{materialDesign:PackIcon Kind=FilePlus}" InputGestureText="Ctrl+O" Click="OpenFileMenuItem_Click" ToolTip="打开文件夹"/>
-                        <MenuItem Header="保存(S)" Icon="{materialDesign:PackIcon Kind=ContentSave}" InputGestureText="Ctrl+S" ToolTip="保存已修改的部分"/>
+                        <MenuItem Header="保存(S)" Icon="{materialDesign:PackIcon Kind=ContentSave}" InputGestureText="Ctrl+S" Click="SaveFileMenuItem_Click" ToolTip="保存已修改的部分"/>
                         <MenuItem Header="另存为(C)" Icon="{materialDesign:PackIcon Kind=ContentCopy}" ToolTip="在本地路径下新建备份"/>
                         <Separator />
                         <MenuItem Header="打印(P)" Icon="{materialDesign:PackIcon Kind=Printer}" ToolTip="连接打印机并打印文件"/>
-                        <MenuItem Header="退出(E)" Icon="{materialDesign:PackIcon Kind=ExitToApp}" InputGestureText="Ctrl+E"/>
+                        <MenuItem Header="退出(E)" Icon="{materialDesign:PackIcon Kind=ExitToApp}" InputGestureText="Ctrl+E" Click="ExitMenuItem_Click"/>
                     </MenuItem>
                 </Menu>
                 <Menu Foreground="#4698b5"
@@ -93,6 +97,7 @@
                                     <Setter Property="materialDesign:ListBoxItemAssist.HoverBackground" Value="{DynamicResource PrimaryHueLightBrush}"/>
                                     <Setter Property="materialDesign:ListBoxItemAssist.SelectedFocusedBackground" Value="{DynamicResource PrimaryHueMidBrush}"/>
                                     <Setter Property="materialDesign:ListBoxItemAssist.SelectedUnfocusedBackground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                                    <Setter Property="ToolTip" Value="{Binding FullPath}"/>
                                 </Style>
                             </ListBox.ItemContainerStyle>
                         </ListBox>
@@ -107,20 +112,22 @@
                             />
                     </StackPanel>
                 </Border>
-                <TextBox x:Name="FileContentBox"
-                         Foreground="White"
-                         FontSize="20"
-                         Grid.Row="0"
-                         Grid.Column="3"
-                         TextWrapping="Wrap"
-                         VerticalScrollBarVisibility="Auto"
-                         AcceptsReturn="True">
-                </TextBox>
+                <ScrollViewer Style="{StaticResource MaterialDesignScrollViewer}"
+                              Grid.Row="0"
+                              Grid.Column="3">
+                    <TextBox x:Name="FileContentBox"
+                             SelectionChanged="FileContentBox_SelectionChanged"
+                             Foreground="White"
+                             FontSize="20"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True">
+                    </TextBox>
+                </ScrollViewer>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1.5*"/>
@@ -137,7 +144,7 @@
                         ToolTip="当前光标在文本中的位置"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="行0,列0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="CursorPositionTextBlock" Text="行0,列0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -164,7 +171,7 @@
                         ToolTip="文件内容类型"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="纯文本" VerticalAlignment="Center"/>
+                            <TextBlock Text="纯文本" VerticalAlignment="Center" FontWeight="Normal"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -177,7 +184,7 @@
                         ToolTip="缩放大小"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="100%" VerticalAlignment="Center"/>
+                            <TextBlock Text="100%" VerticalAlignment="Center" FontWeight="Normal"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -190,7 +197,7 @@
                         ToolTip="文件所使用的换行格式"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="Windows(CRLF)" VerticalAlignment="Center"/>
+                            <TextBlock Text="Windows(CRLF)" VerticalAlignment="Center" FontWeight="Normal"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -204,7 +211,7 @@
                         ToolTip="文件所使用的编码格式(国际通用UFT-8)"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="Unicode" VerticalAlignment="Center"/>
+                            <TextBlock Text="UTF-8" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </Grid>
