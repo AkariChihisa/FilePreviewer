@@ -17,15 +17,12 @@ namespace FilePreviewer
     /// </summary>
     public partial class MainWindow : Window
     {
-        // 存储文件路径的列表
-        private List<string> filePaths = new List<string>();
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void OpenFileButton_Click(Object sender, RoutedEventArgs e)
+        private void OpenFileMenuItem_Click(Object sender, RoutedEventArgs e)
         {
             using (var dialog = new FolderBrowserDialog())
             {
@@ -67,6 +64,7 @@ namespace FilePreviewer
                 catch (IOException ex)
                 {
                     MessageBox.Show("读取文件出错: " + ex.Message);
+                    Content_Unicode.Content = "未知编码";
                 }
             }
         }
