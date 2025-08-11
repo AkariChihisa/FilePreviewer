@@ -23,7 +23,7 @@
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-                <Menu Foreground="#0091EA"
+                <Menu Foreground="#4698b5"
                       materialDesign:MenuAssist.TopLevelMenuItemHeight="30"
                       Style="{StaticResource MaterialDesignMenu}">
                     <MenuItem Header="文件(F)">
@@ -36,181 +36,41 @@
                         <MenuItem Header="退出(E)" Icon="{materialDesign:PackIcon Kind=ExitToApp}" InputGestureText="Ctrl+E"/>
                     </MenuItem>
                 </Menu>
-                <Grid Width="130" Margin="0,0,2,0">
-                    <!-- 编辑-弹出菜单按钮 -->
-                    <materialDesign:SplitButton
-                        Content="编辑(E)"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignFlatLightSplitButton}"
-                        materialDesign:ButtonAssist.CornerRadius="0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                        <!-- 编辑-弹出菜单内容 -->
-                        <materialDesign:SplitButton.PopupContent>
-                            <StackPanel>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="TEST">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="AlertCircleOutline"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0" />
-                                            <TextBlock Grid.Column="1" Text="TEST" VerticalAlignment="Center" />
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                            </StackPanel>
-                        </materialDesign:SplitButton.PopupContent>
-                    </materialDesign:SplitButton>
-                </Grid>
-                <Grid Width="130" Margin="0,0,2,0">
-                    <!-- 查看-弹出菜单按钮 -->
-                    <materialDesign:SplitButton
-                        Content="查看(V)"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignFlatLightSplitButton}"
-                        materialDesign:ButtonAssist.CornerRadius="0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                        <!-- 查看-弹出菜单内容 -->
-                        <materialDesign:SplitButton.PopupContent>
-                            <StackPanel>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="TEST">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="AlertCircleOutline"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0" />
-                                            <TextBlock Grid.Column="1" Text="TEST" VerticalAlignment="Center" />
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                            </StackPanel>
-                        </materialDesign:SplitButton.PopupContent>
-                    </materialDesign:SplitButton>
-                </Grid>
-                <Grid Width="130" Margin="0,0,2,0">
-                    <!-- 外观-弹出菜单按钮 -->
-                    <materialDesign:SplitButton
-                        Content="外观(A)"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignFlatLightSplitButton}"
-                        materialDesign:ButtonAssist.CornerRadius="0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                        <!-- 外观-弹出菜单内容 -->
-                        <materialDesign:SplitButton.PopupContent>
-                            <StackPanel>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="TEST">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="AlertCircleOutline"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0" />
-                                            <TextBlock Grid.Column="1" Text="TEST" VerticalAlignment="Center" />
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                            </StackPanel>
-                        </materialDesign:SplitButton.PopupContent>
-                    </materialDesign:SplitButton>
-                </Grid>
-                <Grid Width="130" Margin="0,0,2,0">
-                    <!-- 设置-弹出菜单按钮 -->
-                    <materialDesign:SplitButton
-                        Content="设置(S)"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignFlatLightSplitButton}"
-                        materialDesign:ButtonAssist.CornerRadius="0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                        <!-- 设置-弹出菜单内容 -->
-                        <materialDesign:SplitButton.PopupContent>
-                            <StackPanel>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="TEST">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="AlertCircleOutline"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0" />
-                                            <TextBlock Grid.Column="1" Text="TEST" VerticalAlignment="Center" />
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                            </StackPanel>
-                        </materialDesign:SplitButton.PopupContent>
-                    </materialDesign:SplitButton>
-                </Grid>
-                <Grid Width="130" Margin="0,0,2,0">
-                    <!-- 帮助-弹出菜单按钮 -->
-                    <materialDesign:SplitButton
-                        Content="帮助(H)"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignFlatLightSplitButton}"
-                        materialDesign:ButtonAssist.CornerRadius="0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                        <!-- 帮助-弹出菜单内容 -->
-                        <materialDesign:SplitButton.PopupContent>
-                            <StackPanel>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="TEST">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="AlertCircleOutline"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0" />
-                                            <TextBlock Grid.Column="1" Text="TEST" VerticalAlignment="Center" />
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                            </StackPanel>
-                        </materialDesign:SplitButton.PopupContent>
-                    </materialDesign:SplitButton>
-                </Grid>
+                <Menu Foreground="#4698b5"
+                      materialDesign:MenuAssist.TopLevelMenuItemHeight="30"
+                      Style="{StaticResource MaterialDesignMenu}">
+                    <MenuItem Header="编辑(E)">
+                        <MenuItem Header="Test" Icon="{materialDesign:PackIcon Kind=AlertCircleOutline}" InputGestureText="Alt+T"/>
+                    </MenuItem>
+                </Menu>
+                <Menu Foreground="#4698b5"
+                      materialDesign:MenuAssist.TopLevelMenuItemHeight="30"
+                      Style="{StaticResource MaterialDesignMenu}">
+                    <MenuItem Header="查看(V)">
+                        <MenuItem Header="Test" Icon="{materialDesign:PackIcon Kind=AlertCircleOutline}" InputGestureText="Alt+T"/>
+                    </MenuItem>
+                </Menu>
+                <Menu Foreground="#4698b5"
+                      materialDesign:MenuAssist.TopLevelMenuItemHeight="30"
+                      Style="{StaticResource MaterialDesignMenu}">
+                    <MenuItem Header="外观(P)">
+                        <MenuItem Header="Test" Icon="{materialDesign:PackIcon Kind=AlertCircleOutline}" InputGestureText="Alt+T"/>
+                    </MenuItem>
+                </Menu>
+                <Menu Foreground="#4698b5"
+                      materialDesign:MenuAssist.TopLevelMenuItemHeight="30"
+                      Style="{StaticResource MaterialDesignMenu}">
+                    <MenuItem Header="设置(S)">
+                        <MenuItem Header="Test" Icon="{materialDesign:PackIcon Kind=AlertCircleOutline}" InputGestureText="Alt+T"/>
+                    </MenuItem>
+                </Menu>
+                <Menu Foreground="#4698b5"
+                      materialDesign:MenuAssist.TopLevelMenuItemHeight="30"
+                      Style="{StaticResource MaterialDesignMenu}">
+                    <MenuItem Header="帮助(H)">
+                        <MenuItem Header="Test" Icon="{materialDesign:PackIcon Kind=AlertCircleOutline}" InputGestureText="Alt+T"/>
+                    </MenuItem>
+                </Menu>
             </StackPanel>
 
             <Grid Grid.Row="1" Grid.Column="0">
@@ -273,11 +133,11 @@
                         Height="25"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="当前光标在文本中的位置"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="行R,列C" VerticalAlignment="Center"/>
+                            <TextBlock Text="行0,列0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -287,11 +147,11 @@
                         Height="25"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="文件包含的总字符数"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="X个字符" VerticalAlignment="Center"/>
+                            <TextBlock Text="0个字符" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -300,8 +160,8 @@
                         Height="25"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="文件内容类型"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Text="纯文本" VerticalAlignment="Center"/>
@@ -313,8 +173,8 @@
                         Height="25"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="缩放大小"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Text="100%" VerticalAlignment="Center"/>
@@ -326,8 +186,8 @@
                         Height="25"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="文件所使用的换行格式"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Text="Windows(CRLF)" VerticalAlignment="Center"/>
@@ -340,11 +200,11 @@
                         Height="25"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="文件所使用的编码格式(国际通用UFT-8)"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="编码格式" VerticalAlignment="Center"/>
+                            <TextBlock Text="Unicode" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </Grid>
