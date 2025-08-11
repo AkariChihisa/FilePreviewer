@@ -358,7 +358,7 @@
                 </Grid.ColumnDefinitions>
                 <Border BorderBrush="Gray" BorderThickness="1" Grid.ColumnSpan="3">
                     <StackPanel Grid.Row="0" Grid.Column="0">
-                        <ListBox x:Name="FileListBox" SelectionChanged="FileListBox_SelectionChanged" Background="#1E1E1E" Foreground="White"></ListBox>
+                        <ListBox x:Name="FileListBox"  DisplayMemberPath="FileName" SelectionChanged="FileListBox_SelectionChanged" Foreground="White"></ListBox>
                     </StackPanel>
                 </Border>
                 <TextBox x:Name="FileContentBox"
@@ -373,8 +373,8 @@
             </Grid>
             <Grid Grid.Row="2" Grid.Column="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1.5*"/>
@@ -388,10 +388,10 @@
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        ToolTip="当前选中列所处位置"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="行R,列C" VerticalAlignment="Center"/>
+                            <TextBlock Text="行R,列C" VerticalAlignment="Center" FontWeight="Normal"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -402,10 +402,10 @@
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        ToolTip="文件总字符数"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="X个字符" VerticalAlignment="Center"/>
+                            <TextBlock Text="X个字符" VerticalAlignment="Center" FontWeight="Normal"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -415,10 +415,10 @@
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        ToolTip="文本类型"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="纯文本" VerticalAlignment="Center"/>
+                            <TextBlock Text="纯文本" VerticalAlignment="Center" FontWeight="Normal"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -428,10 +428,10 @@
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        ToolTip="缩放"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="100%" VerticalAlignment="Center"/>
+                            <TextBlock Text="100%" VerticalAlignment="Center" FontWeight="Normal"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -441,10 +441,10 @@
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        ToolTip="文件使用的换行格式"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="Windows(CRLF)" VerticalAlignment="Center"/>
+                            <TextBlock Text="Windows(CRLF)" VerticalAlignment="Center" FontWeight="Normal"/>
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -455,10 +455,10 @@
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                        ToolTip="文件使用的编码方式"
                         >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="编码格式" VerticalAlignment="Center"/>
+                            <TextBlock Text="编码格式" VerticalAlignment="Center" FontWeight="Normal"/>
                         </StackPanel>
                     </Button>
                 </Grid>

@@ -32,6 +32,7 @@ namespace FilePreviewer
                 dialog.Description = "选择包含 .txt 和 .log 文件的文件夹";
                 dialog.ShowNewFolderButton = false;
 
+                FileListBox.Items.Clear();
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string selectedPath = dialog.SelectedPath;
@@ -42,25 +43,31 @@ namespace FilePreviewer
                     FileListBox.Items.Clear();
                     foreach (var file in files)
                     {
-                        FileListBox.Items.Add(file);
+                        // 前台文件名和后台全路径
+                        FileListBox.Items.Add(new FileItem
+                        {
+                            FileName = Path.GetFileName(file),
+                            FullPath = file
+                        });
                     }
+                    FileListBox.DisplayMemberPath = "FileName";
                 }
             }
         }
         private void FileListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (FileListBox.SelectedItem is string selectedFile)
+            if (FileListBox.SelectedItem is FileItem selectedFile)
             {
                 try
                 {
-                    string content = File.ReadAllText(selectedFile, Encoding.UTF8);
+                    string content = File.ReadAllText(selectedFile.FullPath, Encoding.UTF8);
+                    Content_Unicode.Content = "UTF-8";
                     if (content.Contains("�"))
                     {
                         // 出现乱码，尝试使用GB2312编码读取
-                        content = File.ReadAllText(selectedFile, Encoding.GetEncoding("GB2312"));
+                        content = File.ReadAllText(selectedFile.FullPath, Encoding.GetEncoding("GB2312"));
                         Content_Unicode.Content = "GB2312";
                     }
-                    Content_Unicode.Content = "UTF-8";
                     Counter_String.Content = content.Length.ToString() + "个字符";
                     FileContentBox.Text = content;
                 }
