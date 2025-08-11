@@ -18,160 +18,24 @@
         </Border.Background>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-                <Grid Width="130" Margin="0,0,2,0">
-                    <!-- 文件-弹出菜单按钮 -->
-                    <materialDesign:SplitButton
-                        Content="文件(F)"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignFlatLightSplitButton}"
-                        materialDesign:ButtonAssist.CornerRadius="0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                        <!-- 文件-弹出菜单内容 -->
-                        <materialDesign:SplitButton.PopupContent>
-                            <StackPanel>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="新建文件/文件夹">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="NewBox"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0"/>
-                                            <TextBlock Grid.Column="1"
-                                                       Text="新建(N)"
-                                                       VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            Click="OpenFileButton_Click"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="打开文件夹">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="FilePlus"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0"/>
-                                            <TextBlock Grid.Column="1"
-                                                       Text="打开(S)"
-                                                       VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="保存已修改的部分">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="ContentSave"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0"/>
-                                            <TextBlock Grid.Column="1"
-                                                       Text="保存(S)"
-                                                       VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="在本地路径下新建备份">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="ContentCopy"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0"/>
-                                            <TextBlock Grid.Column="1"
-                                                       Text="另存为(C)"
-                                                       VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="连接打印机并打印文件">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="Printer"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0"/>
-                                            <TextBlock Grid.Column="1"
-                                                       Text="打印(P)"
-                                                       VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                                <Grid Width="130">
-                                    <Button Height="30"
-                                            materialDesign:ButtonAssist.CornerRadius="0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                            Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                            ToolTip="退出应用">
-                                        <Grid Width="130">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <materialDesign:PackIcon Kind="ExitToApp"
-                                                                     VerticalAlignment="Center"
-                                                                     Width="20" Height="20"
-                                                                     Margin="15,0,0,0"/>
-                                            <TextBlock Grid.Column="1"
-                                                       Text="退出(E)"
-                                                       VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Button>
-                                </Grid>
-                            </StackPanel>
-
-                        </materialDesign:SplitButton.PopupContent>
-                    </materialDesign:SplitButton>
-                </Grid>
+                <Menu Foreground="#0091EA"
+                      materialDesign:MenuAssist.TopLevelMenuItemHeight="30"
+                      Style="{StaticResource MaterialDesignMenu}">
+                    <MenuItem Header="文件(F)">
+                        <MenuItem Header="新建(N)" Icon="{materialDesign:PackIcon Kind=NewBox}" ToolTip="新建文件/文件夹" />
+                        <MenuItem Header="打开(O)" Icon="{materialDesign:PackIcon Kind=FilePlus}" InputGestureText="Ctrl+O" Click="OpenFileMenuItem_Click" ToolTip="打开文件夹"/>
+                        <MenuItem Header="保存(S)" Icon="{materialDesign:PackIcon Kind=ContentSave}" InputGestureText="Ctrl+S" ToolTip="保存已修改的部分"/>
+                        <MenuItem Header="另存为(C)" Icon="{materialDesign:PackIcon Kind=ContentCopy}" ToolTip="在本地路径下新建备份"/>
+                        <Separator />
+                        <MenuItem Header="打印(P)" Icon="{materialDesign:PackIcon Kind=Printer}" ToolTip="连接打印机并打印文件"/>
+                        <MenuItem Header="退出(E)" Icon="{materialDesign:PackIcon Kind=ExitToApp}" InputGestureText="Ctrl+E"/>
+                    </MenuItem>
+                </Menu>
                 <Grid Width="130" Margin="0,0,2,0">
                     <!-- 编辑-弹出菜单按钮 -->
                     <materialDesign:SplitButton
@@ -358,7 +222,29 @@
                 </Grid.ColumnDefinitions>
                 <Border BorderBrush="Gray" BorderThickness="1" Grid.ColumnSpan="3">
                     <StackPanel Grid.Row="0" Grid.Column="0">
-                        <ListBox x:Name="FileListBox"  DisplayMemberPath="FileName" SelectionChanged="FileListBox_SelectionChanged" Foreground="White"></ListBox>
+                        <ListBox
+                            x:Name="FileListBox"
+                            SelectionChanged="FileListBox_SelectionChanged"
+                            IsEnabled="{Binding IsChecked, ElementName=EnableListBox}"
+                            >
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                                    <Setter Property="Foreground" Value="White"></Setter>
+                                    <Setter Property="materialDesign:ListBoxItemAssist.HoverBackground" Value="{DynamicResource PrimaryHueLightBrush}"/>
+                                    <Setter Property="materialDesign:ListBoxItemAssist.SelectedFocusedBackground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                                    <Setter Property="materialDesign:ListBoxItemAssist.SelectedUnfocusedBackground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                        <!-- 锁定 -->
+                        <CheckBox
+                            HorizontalAlignment="Stretch"
+                            x:Name="EnableListBox"
+                            Content="锁定"
+                            IsChecked="True"
+                            Foreground="White"
+                            Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}"
+                            />
                     </StackPanel>
                 </Border>
                 <TextBox x:Name="FileContentBox"
